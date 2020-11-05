@@ -27,6 +27,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.By.textContains
 import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiScrollable
+import androidx.test.uiautomator.UiSelector
 import androidx.test.uiautomator.Until
 import org.hamcrest.CoreMatchers
 import org.mozilla.fenix.R
@@ -431,7 +433,8 @@ private fun assertRateOnGooglePlay(): ViewInteraction {
 }
 
 private fun assertAboutFirefoxPreview(): ViewInteraction {
-    scrollToElementByText("About Firefox Preview")
+    // scrollToElementByText("About Firefox Preview")
+    UiScrollable(UiSelector().scrollable(true)).getChildByText(UiSelector().text("About Firefox Preview"),"About Firefox Preview")
     return onView(withText("About Firefox Preview"))
         .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
 }
